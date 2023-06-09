@@ -64,9 +64,11 @@ function MainApp() {
       <h1>Some Title</h1>
       <Counter>
         {(num) => {
-          return <div style={{ color: "red", width: "200px" }}>{
-            num + 2
-          }</div>
+          return (
+            <div style={{ color: "red", width: "200px" }}>
+              {num}
+            </div>
+          )
         }}
       </Counter>
 

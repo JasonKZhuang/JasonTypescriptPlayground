@@ -1,4 +1,6 @@
-// basic class
+/// ======== ======== ======== ======== ======== ======== ///
+// basic class Employee
+/// ======== ======== ======== ======== ======== ======== ///
 class Employee {
   id: number;
   name: string;
@@ -15,8 +17,72 @@ class Employee {
   }
 }
 const Peter = new Employee(1, "Peter", "peter@example.com", 30, "English");
+console.log(Peter.name); // "Peter"
 
-//
+/// ======== ======== ======== ======== ======== ======== ///
+// basic class  Greeter
+/// ======== ======== ======== ======== ======== ======== ///
+class Greeter {
+  greeting: string;
+
+  constructor(message: string) {
+    this.greeting = message;
+  }
+
+  greet() {
+    return "Hello, " + this.greeting;
+  }
+}
+let greeter = new Greeter("world");
+
+/// ======== ======== ======== ======== ======== ======== ///
+//Inheritance feature
+/// ======== ======== ======== ======== ======== ======== ///
+class Animal {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  move(distanceInMeters: number = 0) {
+    console.log(`Animal moved ${distanceInMeters}m.`);
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log("Woof! Woof!");
+  }
+}
+
+class Snake extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 5) {
+    console.log("Slithering...");
+    super.move(distanceInMeters);
+  }
+}
+
+class Horse extends Animal {
+  constructor(name: string) {
+    super(name);
+  }
+  move(distanceInMeters = 45) {
+    console.log("Galloping...");
+    super.move(distanceInMeters);
+  }
+}
+const dog = new Dog("Big Yellow");
+dog.bark();
+dog.move(10);
+dog.bark();
+let sam = new Snake("Sammy the Python");
+sam.move();
+let tom: Animal = new Horse("Tommy the Palomino");
+tom.move(34);
+
 class Employee2 {
   constructor(public readonly id: number, public name: string, private email: string, protected lang: string = "Chinese") {
     this.id = id;
@@ -55,6 +121,7 @@ interface Musician {
   instrument: string;
   play(action: string): string; // a method
 }
+
 // a class implements the interface
 class Beatles implements Musician {
   name: string;
@@ -97,6 +164,7 @@ console.log(steve.id);
 console.log(amy.id);
 
 /////////////////////////////////////////////////////////
+// a class of Band
 class Bands {
   private dataState: string[];
 
@@ -111,8 +179,7 @@ class Bands {
   // set method
   public set data(value: string[]) {
     if (Array.isArray(value) && value.every((e) => typeof e === "string")) {
-      this.data = value;
-      return;
+      this.dataState = value;
     } else {
       throw new Error("data must be an array of strings");
     }
@@ -121,8 +188,9 @@ class Bands {
 
 const myBands = new Bands();
 myBands.data = ["Neil Young", "Led Zeppelin"];
-// console.log(myBands.data);
-// myBands.data = [...myBands.data, "ZZ Zhuang"];
-// console.log(myBands.data);
-// myBands.data = ["Van Halen"];
-// console.log(myBands.data);
+console.log(myBands.data);
+// using triple dots to spread previous values
+myBands.data = [...myBands.data, "ZZ Zhuang"];
+console.log(myBands.data);
+myBands.data = ["Van Haler", "24243"];
+console.log(myBands.data);

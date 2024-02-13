@@ -15,10 +15,7 @@ const btnStyle: CSS.Properties = {
 type CounterProps = {
   children: (num: number) => ReactNode;
 };
-type StateType = {
-  count: number,
-  text: string,
-}
+
 type ReducerAction = {
   type: REDUCER_ACTIVE_TYPE,
   payload?: string,
